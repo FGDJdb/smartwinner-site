@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartWinner Predictions</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png" />
+  <style>
+    body {
+      background: #f7f9fb;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      margin: 40px;
+    }
+    h1 {
+      color: #0066cc;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      color: #555;
+    }
+    .nav-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .nav-buttons a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .nav-buttons a:hover {
+      background: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 14px;
+      text-align: center;
+    }
+    th {
+      background: #f0f4f7;
+    }
+    tr.high { background-color: #d4edda; }
+    tr.medium { background-color: #fff3cd; }
+    tr.low { background-color: #f8d7da; }
+    tr th:first-child, tr td:first-child {
+      width: 50px;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #888;
+    }
+    .download {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .download button {
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .download button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>SmartWinner - Daily AI Football Predictions</h1>
+  <p>Automated insights from GPT + Value Analysis</p>
+  <div class="nav-buttons">
+    <a href="index.html">Home</a>
+    <a href="gantt_integration.html">📊 View Gantt Timeline</a>
+  </div>
+  <p>📅 Predictions generated on: <span id="date"></span></p>
+  <table id="predictions-table">
+    <thead>
+      <tr>
+        <th>#</th><th>Match</th><th>Prediction</th><th>Value</th><th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="high"><td>1</td><td>France vs Nigeria</td><td style="color:green;">1</td><td>High</td><td>Top value match</td></tr>
+      <tr class="medium"><td>2</td><td>Argentina vs Peru</td><td style="color:orange;">1</td><td>Medium</td><td>Balanced odds</td></tr>
+      <tr class="low"><td>3</td><td>Italy vs Germany</td><td style="color:red;">X</td><td>Low</td><td>Uncertain trend</td></tr>
+    </tbody>
+  </table>
+
+  <div class="download">
+    <button onclick="downloadCSV()">⬇️ Download as CSV</button>
+  </div>
+
+  <div class="footer">SmartWinner © 2025</div>
+
+  <script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString();
+
+    function downloadCSV() {
+      const rows = [...document.querySelectorAll("table tr")]
+        .map(row => [...row.children].map(cell => cell.innerText).join(","))
+        .join("\n");
+      const blob = new Blob([rows], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "predictions.csv";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
