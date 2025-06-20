@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartWinner Predictions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; background-color: #111; color: #eee; padding: 20px; }
+        h1 { color: #6cf; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #222; }
+        th, td { padding: 10px; border: 1px solid #444; text-align: center; }
+        .High { background-color: #155724; color: #d4edda; }
+        .Medium { background-color: #856404; color: #fff3cd; }
+        .Low { background-color: #721c24; color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>📈 SmartWinner – Daily Football Predictions</h1>
+    <table id="predictionsTable">
+        <thead>
+            <tr><th>#</th><th>Match</th><th>Prediction</th><th>Value</th><th>Notes</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch('value-data.json')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector("#predictionsTable tbody");
+                data.forEach((item, i) => {
+                    const row = document.createElement("tr");
+                    row.className = item.value;
+                    row.innerHTML = `<td>${i+1}</td><td>${item.match}</td><td>${item.prediction}</td><td>${item.value}</td><td>${item.note}</td>`;
+                    tbody.appendChild(row);
+                });
+            });
+    </script>
+</body>
+</html>

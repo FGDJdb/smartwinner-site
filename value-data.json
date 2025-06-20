@@ -1,0 +1,32 @@
+[
+    {
+        "match": "France vs Nigeria",
+        "prediction": "1",
+        "value": "High",
+        "note": "Top pick"
+    },
+    {
+        "match": "Argentina vs Peru",
+        "prediction": "1",
+        "value": "Medium",
+        "note": "Based on recent form"
+    },
+    {
+        "match": "Italy vs Germany",
+        "prediction": "X",
+        "value": "Low",
+        "note": "Tight matchup"
+    },
+    {
+        "match": "England vs Spain",
+        "prediction": "2",
+        "value": "High",
+        "note": "Strong away performance"
+    },
+    {
+        "match": "Brazil vs Mexico",
+        "prediction": "1",
+        "value": "Medium",
+        "note": "Value odds"
+    }
+]
